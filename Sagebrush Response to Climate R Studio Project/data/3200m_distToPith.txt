@@ -1,0 +1,40 @@
+       1                                                     
+       2                                                           1962 2015
+       3 
+01a      DistanceToPith=2.4; YearsToPith=3; CalcRadius=Yes; Radius=25.114; 
+01a      PithCoordinates=31.528,30.850; 
+01b      DistanceToPith=2.2; YearsToPith=3; CalcRadius=Yes; Radius=25.072; 
+01b      PithCoordinates=31.528,30.670; 
+02a      DistanceToPith=0.0; YearsToPith=0; CalcRadius=Yes; Radius=31.327; 
+02a      PithCoordinates=25.760,54.896; 
+02b      DistanceToPith=0.0; YearsToPith=0; CalcRadius=Yes; Radius=29.877; 
+02b      PithCoordinates=25.813,55.012; 
+03a      DistanceToPith=3.1; YearsToPith=5; CalcRadius=Yes; Radius=38.555; 
+03a      PithCoordinates=20.225,8.530; 
+03b      DistanceToPith=3.2; YearsToPith=5; CalcRadius=Yes; Radius=28.247; 
+03b      PithCoordinates=20.151,8.414; 
+04a      DistanceToPith=2.0; YearsToPith=3; CalcRadius=Yes; Radius=36.491; 
+04a      PithCoordinates=56.282,36.957; 
+04b      DistanceToPith=1.7; YearsToPith=3; CalcRadius=Yes; Radius=36.470; 
+04b      PithCoordinates=7.620,0.063; 
+05a      4 years to pith
+06a      DistanceToPith=0.9; YearsToPith=3; CalcRadius=Yes; Radius=63.500; 
+06a      PithCoordinates=14.425,69.522; 
+06b      DistanceToPith=0.8; YearsToPith=3; CalcRadius=Yes; Radius=29.358; 
+06b      PithCoordinates=1.588,0.063; 
+07a      DistanceToPith=6.3; YearsToPith=17; CalcRadius=Yes; Radius=42.683; 
+07a      PithCoordinates=51.964,3.969; 
+07b      DistanceToPith=7.2; YearsToPith=17; CalcRadius=Yes; Radius=40.576; 
+07b      PithCoordinates=51.805,3.154; 
+08a_outl 0 years to pith
+08b      DistanceToPith=0.7; YearsToPith=2; CalcRadius=Yes; Radius=32.618; 
+08b      PithCoordinates=6.657,0.074; 
+08c      DistanceToPith=0.7; YearsToPith=2; CalcRadius=Yes; Radius=13.007; 
+08c      PithCoordinates=32.332,13.663; 
+09a      CalcRadius=Yes; Radius=13.473; PithCoordinates=38.777,18.404; 
+09b      DistanceToPith=0.0; YearsToPith=0; CalcRadius=Yes; Radius=15.494; 
+09b      PithCoordinates=38.777,18.394; 
+10a      DistanceToPith=0.0; YearsToPith=0; CalcRadius=Yes; Radius=23.982; 
+10a      PithCoordinates=26.130,44.408; 
+10b      DistanceToPith=0.0; YearsToPith=0; CalcRadius=Yes; Radius=18.108; 
+10b      PithCoordinates=26.109,44.397; 

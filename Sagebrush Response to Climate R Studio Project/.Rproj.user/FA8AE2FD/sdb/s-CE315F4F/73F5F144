@@ -1,0 +1,18 @@
+{
+    "contents" : "# take the precip and temperature data from the GIS product and make it into a dataframe for treeclim\nread.csv(\"data/Precip4kAnnual1962-2010AllFieldSites2015.csv\")",
+    "created" : 1461099079786.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1806709387",
+    "id" : "73F5F144",
+    "lastKnownWriteTime" : 1461105858,
+    "path" : "C:/Users/Tower/Desktop/Sagebrush's response to Climate/R-code/Sagebrush Response to Climate R Studio Project/code/Extract 4k Prism values for temp and precip.R",
+    "project_path" : "code/Extract 4k Prism values for temp and precip.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 7,
+    "source_on_save" : false,
+    "type" : "r_source"
+}
