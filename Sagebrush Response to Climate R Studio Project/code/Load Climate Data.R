@@ -1,7 +1,7 @@
 # load and reorder climate data
 
-Tempdf<-read.csv(file = "data/Tempdf.csv",stringsAsFactors = FALSE)
-Precipdf<-read.csv(file="data/Precipdf.csv",stringsAsFactors = FALSE)
+Tempdf<-read.csv(file = "data/YearlyTempdf.csv",stringsAsFactors = FALSE)
+Precipdf<-read.csv(file="data/YearlyPrecipdf.csv",stringsAsFactors = FALSE)
 # reorder data frame to be ordered by source and then year so that data is sequential fo nameless vectors
 Precipdf<-Precipdf[order(Precipdf$Source,Precipdf$Year),]
 Tempdf<-Tempdf[order(Tempdf$Source,Tempdf$Year),]

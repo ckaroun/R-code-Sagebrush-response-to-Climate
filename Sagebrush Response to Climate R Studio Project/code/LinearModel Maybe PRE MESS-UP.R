@@ -25,6 +25,8 @@ for (i in 1:3){
   
   fit<-lm(chrons[c.row.i,1]~Precipdf[p.row.i,1]*Tempdf[t.row.i,1])
   
+  #browser()
+  
   if(summary(fit)$coeff[2,4]<.12){
   plot(Precipdf[p.row.i,1], chrons[c.row.i,1], main=paste("Precipitation's effect on Ring Growth",substr(PSource[i],24,30)), xlab= "Precipitation(mm)", ylab="Ring Growth (mm)")
   abline(coef=fit$coefficients[c(1,2)],col="black")
@@ -80,15 +82,15 @@ abline(h=0,col="grey")
 
 
 
-pdf("Multiple Linear regression residual plots")
-plot(M3200m)
+#pdf("Multiple Linear regression residual plots")
+# plot(M3200m)
+# 
+# plot(M3500m)
+# 
+# plot(M3800m)
+#dev.off()
 
-plot(M3500m)
-
-plot(M3800m)
-dev.off()
-
-pdf("univariate correlations")
+#pdf("univariate correlations")
 plot(Precipdf[p.row.i,1],chrons[c.row.i,1],type="p", ylab="Ring Growth", xlab="Precipitation")
 points(Precipdf[p.row.i,1],predict(M3200m),col="red")
 legend("topleft",legend="lm prediction", lwd=1, col="red")
@@ -107,4 +109,4 @@ abline(bf2)
 summary(bf2)
 abline(M3800m)
 
-dev.off()
+#dev.off()
