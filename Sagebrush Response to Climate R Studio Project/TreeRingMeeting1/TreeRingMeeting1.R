@@ -1,3 +1,7 @@
+### Author: Chris Karounos
+### Purpose: Loading climate and ring data, creating model for ring response
+### Date Modified: 25 April 2016
+
 
 # Load (read) into R the PRISM Climate data I sent out 
 # and store (<-) the data as the variable Precip3200; Precip3500; Precip3800 
