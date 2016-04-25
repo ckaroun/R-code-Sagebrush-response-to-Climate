@@ -1,0 +1,17 @@
+{
+    "contents" : "\nBarcroftProcessingPath=\"C:/Users/Tower/Google Drive/1 Diez lab/Dendrochronology/dendrochronology r script/1950-2011 Barcroft Weather Data reformatting.R\"\nTempdfPath=\"data/Tempdf.csv\"\nPrecipdfPath=\"data/Precipdf.csv\"\n\nsource(BarcroftProcessingPath)\n# load precip and temperature data\nload(\"C:/Users/Tower/Google Drive/1 Diez lab/Artemisia response to Climate, Kalman filter. Lab meeting February 2nd/GraphingProj.Rdata\")\nTempdf<-read.csv(file = TempdfPath, stringsAsFactors = FALSE)\nPrecipdf<-read.csv(file = PrecipdfPath, stringsAsFactors = FALSE)\n\n# reorder data frame to be ordered by source and then year so that data is sequential fo nameless vectors\nPrecipdf<-Precipdf[order(Precipdf$Source,Precipdf$Year),]\nTempdf<-Tempdf[order(Tempdf$Source,Tempdf$Year),]\n#remove first row which is just rownames from dataframe\nPrecipdf$X<-NULL #DO THESE ONLY ONCE: \nTempdf$X<-NULL # #DO THESE ONLY ONCE: ",
+    "created" : 1461003140846.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2507222721",
+    "id" : "D7F946E5",
+    "lastKnownWriteTime" : 1461002317,
+    "path" : "C:/Users/Tower/Desktop/Sagebrush's response to Climate/R-code Sagebrush response to Climate/Sagebrush Response to Climate R Studio Project/code/BarcroftStationToPRISMcorrelation.R",
+    "project_path" : "code/BarcroftStationToPRISMcorrelation.R",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "type" : "r_source"
+}
