@@ -2,28 +2,28 @@
 ### Purpose: Loading climate and ring data, creating model for ring response
 ### Date Modified: 25 April 2016
 
-
+# In Rstudio if you click Session>Set Working Directory > To Source File Location . This code should work in anyones locally cloned repository without having to modify the filepaths for loading data
 
 # Load (read) into R the PRISM Climate data I sent out 
 # and store (<-) the data as the variable Precip3200; Precip3500; Precip3800 
-Precip3200m<-read.csv("C:/Users/Beau Bear/Downloads/Monthly3200mPrecipdf.csv") # Change the filepath in the quotations to where the Monthly3200m csv file is on your computer. For example it might be in your downloads folder: C:/Users/Tower/Downloads/
-Precip3500m<-read.csv("C:/Users/Beau Bear/Downloads/Monthly3500mPrecipdf.csv") # Do the same thing for all the Monthly-Precip data files
-Precip3800m<-read.csv("C:/Users/Beau Bear/Downloads/Monthly3800mPrecipdf.csv")
+Precip3200m<-read.csv("Monthly3200mPrecipdf.csv") # Change the filepath in the quotations to where the Monthly3200m csv file is on your computer. For example it might be in your downloads folder: C:/Users/Tower/Downloads/
+Precip3500m<-read.csv("Monthly3500mPrecipdf.csv") # Do the same thing for all the Monthly-Precip data files
+Precip3800m<-read.csv("Monthly3800mPrecipdf.csv")
 
-Temp3200m<-read.csv("C:/Users/Beau Bear/Downloads/Monthly3200mTempdf.csv")# And also the Monthly-Temp data files
-Temp3500m<-read.csv("C:/Users/Beau Bear/Downloads/Monthly3500mTempdf.csv")# Remember to change all the filepaths to where you have the files
-Temp3800m<-read.csv("C:/Users/Beau Bear/Downloads/Monthly3800mTempdf.csv")
+Temp3200m<-read.csv("Monthly3200mTempdf.csv")# And also the Monthly-Temp data files
+Temp3500m<-read.csv("Monthly3500mTempdf.csv")# Remember to change all the filepaths to where you have the files
+Temp3800m<-read.csv("Monthly3800mTempdf.csv")
 
 # For the next part we need to use a function (read.rwl) that is not part of the standard "base" developement of R so we have to install the package called "dplR"
-install.packages("dplR")
+#install.packages("dplR")
 
 # Now that the dplR package is installed we need tell R that we want to use it in the current code document (TreeRingMeeting.R) 
 library(dplR)
 
 # Load (read) into R the Sagebrush chronologies that were made in Cdendro
-Rings3200m<-read.rwl("C:/Users/Beau Bear/Downloads/3200mSagebrushRings.rwl") # The chronologies were grouped by elevation.
-Rings3500m<-read.rwl("C:/Users/Beau Bear/Downloads/3500mSagebrushRings.rwl") # Load (read) the other two chronologies at 3500m and 3800m above sea level
-Rings3800m<-read.rwl("C:/Users/Beau Bear/Downloads/3500mSagebrushRings.rwl")
+Rings3200m<-read.rwl("3200mSagebrushRings.rwl") # The chronologies were grouped by elevation.
+Rings3500m<-read.rwl("3500mSagebrushRings.rwl") # Load (read) the other two chronologies at 3500m and 3800m above sea level
+Rings3800m<-read.rwl("3800mSagebrushRings.rwl")
 
 # You can use plot to compare all the individual chronologies in a collection
 plot(Rings3800m, plot.type = "spag")
@@ -31,7 +31,7 @@ plot(Rings3800m, plot.type = "spag")
 # We need to summarize the Precip data to be the total precipitation for a given year during the growing season (maybe March - September)
 #   We have to do this because we have yearly and not monthly values for radial growth of Sagebrush
 # Install an external package
-install.packages("dplyr")
+#install.packages("dplyr")
 # Tell R to use that package for this code
 library(dplyr)
 
