@@ -6,13 +6,13 @@
 
 # Load (read) into R the PRISM Climate data I sent out 
 # and store (<-) the data as the variable Precip3200; Precip3500; Precip3800 
-Precip3200m<-read.csv("Monthly3200mPrecipdf.csv") # Change the filepath in the quotations to where the Monthly3200m csv file is on your computer. For example it might be in your downloads folder: C:/Users/Tower/Downloads/
-Precip3500m<-read.csv("Monthly3500mPrecipdf.csv") # Do the same thing for all the Monthly-Precip data files
-Precip3800m<-read.csv("Monthly3800mPrecipdf.csv")
+Precip3200m<-read.csv("TreeRingMeeting1/Monthly3200mPrecipdf.csv") # Change the filepath in the quotations to where the Monthly3200m csv file is on your computer. For example it might be in your downloads folder: C:/Users/Tower/Downloads/
+Precip3500m<-read.csv("TreeRingMeeting1/Monthly3500mPrecipdf.csv") # Do the same thing for all the Monthly-Precip data files
+Precip3800m<-read.csv("TreeRingMeeting1/Monthly3800mPrecipdf.csv")
 
-Temp3200m<-read.csv("Monthly3200mTempdf.csv")# And also the Monthly-Temp data files
-Temp3500m<-read.csv("Monthly3500mTempdf.csv")# Remember to change all the filepaths to where you have the files
-Temp3800m<-read.csv("Monthly3800mTempdf.csv")
+Temp3200m<-read.csv("TreeRingMeeting1/Monthly3200mTempdf.csv")# And also the Monthly-Temp data files
+Temp3500m<-read.csv("TreeRingMeeting1/Monthly3500mTempdf.csv")# Remember to change all the filepaths to where you have the files
+Temp3800m<-read.csv("TreeRingMeeting1/Monthly3800mTempdf.csv")
 
 # For the next part we need to use a function (read.rwl) that is not part of the standard "base" developement of R so we have to install the package called "dplR"
 #install.packages("dplR")
@@ -21,10 +21,10 @@ Temp3800m<-read.csv("Monthly3800mTempdf.csv")
 library(dplR)
 
 # Load (read) into R the Sagebrush chronologies that were made in Cdendro
-Rings3200m<-read.rwl("3200mSagebrushRings.rwl") # The chronologies were grouped by elevation.
-Rings3500m<-read.rwl("3500mSagebrushRings.rwl") # Load (read) the other two chronologies at 3500m and 3800m above sea level
-Rings3800m<-read.rwl("3800mSagebrushRings.rwl")
-### dplR features hilight #################################
+Rings3200m<-read.rwl("TreeRingMeeting1/3200mSagebrushRings.rwl") # The chronologies were grouped by elevation.
+Rings3500m<-read.rwl("TreeRingMeeting1/3500mSagebrushRings.rwl") # Load (read) the other two chronologies at 3500m and 3800m above sea level
+Rings3800m<-read.rwl("TreeRingMeeting1/3800mSagebrushRings.rwl")
+### dplR features hilight #######
 # You can use plot to compare all the individual chronologies in a collection
 plot(Rings3800m, plot.type = "spag")
 
@@ -39,12 +39,20 @@ plot(Rings3800m, plot.type = "spag")
 
 # One stat of interest is EPS. The rule of thumb is that if your EPS > .85 then you have collected enough samples in that chronology to get a good climate signal (p109 of our green drendro book by Speer)
 
-
 # We can try to detrend the chronologies to see what effect it has
 DetRings38<-detrend(Rings3800m,method="Ar",make.plot = TRUE)
 # You can see Ar removes all long term trend and even lowered the EPS and SNR
 rwi.stats(DetRings38,ids = id, min.corr.overlap=15)# I used the same id dataframe###
-####End dplR features hilight###
+###Let's calculate eps for 3200m#####
+id32<-data.frame(tree=c(1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,10,10),core=c(1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2))
+rwi.stats(Rings3200m,ids=id32,min.corr.overlap=15)
+# you can see 3200m is not good :(  eps is well below .85 at .49. The mean correlation between shrubs is .118
+# I will try to detrend it to see if it improves
+DetRings32<-detrend(Rings3200m,method="ModNegExp")
+rwi.stats(DetRings32,ids=id32,min.corr.overlap=15)
+# slightly improved but still not very good. Oh well...
+##################################################
+####End dplR features hilight#######
 
 
 # We need to summarize the Precip data to be the total precipitation for a given year during the growing season (maybe March - September)
