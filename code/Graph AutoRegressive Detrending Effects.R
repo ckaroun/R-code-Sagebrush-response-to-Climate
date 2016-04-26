@@ -1,0 +1,1 @@
+# THis code is for generating graphs to show the lab group the effects of autocorrelating
