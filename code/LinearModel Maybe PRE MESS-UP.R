@@ -14,27 +14,27 @@ CSource<-c("3200m radial growth","3500m radial growth","3800m radial growth")
 #define row indexes of only overlapping years between Cdf and Wdf
 for (i in 1:3){
   # subset the data to only the relevant years and data source. 
-  p.row.i<-Precipdf[,2]==PSource[i] & Precipdf[,3]%in% chrons[chrons[,2]==CSource[i],3]
-  c.row.i<-chrons[,2]==CSource[i]& chrons[,3] %in% Precipdf[p.row.i,3]#doesn't need & Wdf[,3]%in% Cdf[,3] because years overlap with themselves! #example name: "3200m radial growth                                                                            "
+  p.row.i<-Precipdf[,2]==PSource[i] & Precipdf[,3]%in% chronsNeg[chronsNeg[,2]==CSource[i],3]
+  c.row.i<-chronsNeg[,2]==CSource[i]& chronsNeg[,3] %in% Precipdf[p.row.i,3]#doesn't need & Wdf[,3]%in% Cdf[,3] because years overlap with themselves! #example name: "3200m radial growth                                                                            "
   # example name "PRISM White Mountain 3200m"
-  t.row.i<-Tempdf[,2]==TSource[i] & Tempdf[,3]%in% chrons[chrons[,2]==CSource[i],3]#example name: "Crooked Creek Weather Station Filled Missing Values (3200m)"
+  t.row.i<-Tempdf[,2]==TSource[i] & Tempdf[,3]%in% chronsNeg[chronsNeg[,2]==CSource[i],3]#example name: "Crooked Creek Weather Station Filled Missing Values (3200m)"
   #follow kalman filter analysis of dendrochonology in biometrics and make output(y) and explanatory variables(Zt) mean of 0 and unit variance of 1
   Tempdf[t.row.i,1]<- (Tempdf[t.row.i,1]-mean(Tempdf[t.row.i,1]))/sd(Tempdf[t.row.i,1]) ### 
   Precipdf[p.row.i,1]<- (Precipdf[p.row.i,1]-mean(Precipdf[p.row.i,1]))/sd(Precipdf[p.row.i,1])
   
   
-  fit<-lm(chrons[c.row.i,1]~Precipdf[p.row.i,1]*Tempdf[t.row.i,1])
+  fit<-lm(chronsNeg[c.row.i,1]~Precipdf[p.row.i,1]*Tempdf[t.row.i,1])
   
   #browser()
   
   if(summary(fit)$coeff[2,4]<.12){
-  plot(Precipdf[p.row.i,1], chrons[c.row.i,1], main=paste("Precipitation's effect on Ring Growth",substr(PSource[i],24,30)), xlab= "Precipitation(mm)", ylab="Ring Growth (mm)")
+  plot(Precipdf[p.row.i,1], chronsNeg[c.row.i,1], main=paste("Precipitation's effect on Ring Growth",substr(PSource[i],24,30)), xlab= "Precipitation(mm)", ylab="Ring Growth (mm)")
   abline(coef=fit$coefficients[c(1,2)],col="black")
   text(min(Precipdf[p.row.i,1]+20),fit$coeff[1]+.2,paste("p=",round(summary(fit)$coeff[2,4],3)),cex=.8) 
   }
   
   if(summary(fit)$coeff[3,4]<.12){
-  plot(Tempdf[p.row.i,1], chrons[c.row.i,1], main=paste("Temperature's effect on Ring Growth",substr(PSource[i],24,30)), xlab= "Temperature(C)", ylab="Ring Growth (mm)")
+  plot(Tempdf[p.row.i,1], chronsNeg[c.row.i,1], main=paste("Temperature's effect on Ring Growth",substr(PSource[i],24,30)), xlab= "Temperature(C)", ylab="Ring Growth (mm)")
   abline(coef=fit$coefficients[c(1,3)],col="black")
   text(min(Tempdf[p.row.i,1]+.2),fit$coeff[1]+.2,paste("p=",round(summary(fit)$coeff[3,4],3)),cex=.8) 
   }
@@ -91,20 +91,20 @@ abline(h=0,col="grey")
 #dev.off()
 
 #pdf("univariate correlations")
-plot(Precipdf[p.row.i,1],chrons[c.row.i,1],type="p", ylab="Ring Growth", xlab="Precipitation")
+plot(Precipdf[p.row.i,1],chronsNeg[c.row.i,1],type="p", ylab="Ring Growth", xlab="Precipitation")
 points(Precipdf[p.row.i,1],predict(M3200m),col="red")
 legend("topleft",legend="lm prediction", lwd=1, col="red")
 abline(M3200m)
 #best fit
-bf1<-lm(chrons[c.row.i,1]~Precipdf[p.row.i,1])
+bf1<-lm(chronsNeg[c.row.i,1]~Precipdf[p.row.i,1])
 #abline(bf1)
 summary(bf1)
 
-plot(Tempdf[t.row.i,1],chrons[c.row.i,1], ylab="Ring Growth", xlab="Temperature")
+plot(Tempdf[t.row.i,1],chronsNeg[c.row.i,1], ylab="Ring Growth", xlab="Temperature")
 points(Tempdf[p.row.i,1],predict(M3200m),col="red")
 legend("topleft",legend="lm prediction", lwd=1, col="red")
 
-#bf2<-lm(chrons[c.row.i,1]~Precipdf[p.row.i,1])
+#bf2<-lm(chronsNeg[c.row.i,1]~Precipdf[p.row.i,1])
 abline(bf2)
 summary(bf2)
 abline(M3800m)
