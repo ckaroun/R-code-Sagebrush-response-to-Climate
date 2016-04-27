@@ -1,19 +1,13 @@
 
 
-# set what computer you are on
-CpUser<- "Tower"
 
-#change working directory based off what computer you are on
-setwd(paste0("c:/Users/",CpUser,"/Google Drive/1 Diez lab/Dendrochronology/dendrochronology r script/"))
-# load .Rdata
-load("GraphingProj.Rdata")
 
 require(dplR)
 require(reshape)
 require(ggplot2)
 
-source("ReadRwl.R")
-rings<-readWMrings()
+
+rings<-c(Rings3200m,Rings3500m,Rings3800m)
 
 #initilize final dataframe. the loop will append to it each run
 tree.ages<-NULL

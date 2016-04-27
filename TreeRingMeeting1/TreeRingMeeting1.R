@@ -30,7 +30,7 @@ plot(Rings3800m, plot.type = "spag")
 
 # dpltR also handles useful statistics using the rwi.stats function
   # first we need to tell it what series are from the same tree.  You can use names(rings3800m) to how many crosssections are per shrub
-  id<-data.frame(tree=c(11,11,12,12,12,13,13,14,14,14,15,15,16,16,16,17,17,17,18,18,19,19,19,20,20,20),core=c(1,2,1,2,3,1,2,1,2,3,1,2,1,2,3,1,2,3,1,2,1,2,3,1,2,3))
+  id<-read.ids(Rings3800m,stc=c(0,2,3))# 0 is the number of letters in chronology name, 2 is the number of digits in shrub id, 3 is the number of digits / letters for the core and shrub id# alternative to doing it manually : data.frame(tree=c(11,11,12,12,12,13,13,14,14,14,15,15,16,16,16,17,17,17,18,18,19,19,19,20,20,20),core=c(1,2,1,2,3,1,2,1,2,3,1,2,1,2,3,1,2,3,1,2,1,2,3,1,2,3))
   ringStats<-rwi.stats(Rings3800m,ids = id, min.corr.overlap=15) # I had to adjust the min.corr.overlap from 30 to 15 so that it could calculate correlation values for our chronology
 
 
