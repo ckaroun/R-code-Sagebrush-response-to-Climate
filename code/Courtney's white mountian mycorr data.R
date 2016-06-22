@@ -5,14 +5,8 @@ require(fitdistrplus) # fitdist for testing the distributions
 
 #Courtney's white mountain mycorrhizae data from multiple elevations
 
-# set what computer you are on
-CpUser<- "Tower"
 
-#change working directory based off what computer you are on
-setwd(paste0("c:/Users/",CpUser,"/Google Drive/1 Diez lab/Dendrochronology/dendrochronology r script/"))#setwd("C:/Users/barne/Downloads/")
-
-
-mycorrRough<-read.csv("C:/Users/Tower/Google Drive/1 Diez lab/Dendrochronology/dendrochronology r script/mycorhizae Data for Courtney_4815.xlsx.xlsx.xlsx - Sheet1.csv",stringsAsFactors = FALSE)
+mycorrRough<-read.csv("data/mycorhizae Data for Courtney_4815.xlsx.xlsx.xlsx - Sheet1.csv",stringsAsFactors = FALSE)
 # cycle through all the months in the regular expression since each month ends in its letter (for precip ONLY)
 mycorr<-mycorrRough[c("Plant","PRLC")]# make it only the last two rows which i organized in excel
 
@@ -154,7 +148,7 @@ summary(ModBeta)
 x32 <- Artemisia[Artemisia$Elevation==3200,"Sample.Percent.Coln"]
 x35 <- Artemisia[Artemisia$Elevation==3500,"Sample.Percent.Coln"]
 x38 <- Artemisia[Artemisia$Elevation==3800,"Sample.Percent.Coln"]
-vioplot(x32,x35,x38,names = c("3200m PRLC","3500m PRLC", "3800m PRLC"))
+vioplot::vioplot(x32,x35,x38,names = c("3200m PRLC","3500m PRLC", "3800m PRLC"), col= "blue")
 # from the sm package run the denisty compare to compare the distributions at different elevations
-sm::sm.density.compare(x=Artemisia$Sample.Percent.Coln,group = Artemisia$Elevation)
+sm::sm.density.compare(x=Artemisia$Sample.Percent.Coln,group = Artemisia$Elevation, h=.1)
 legend("topleft",legend=c("3200m PRLC","3500m PRLC", "3800m PRLC"), lty=c(1,2,3),col = c(2,3,1))

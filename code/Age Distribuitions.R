@@ -1,13 +1,9 @@
-
-
-
-
 require(dplR)
 require(reshape)
 require(ggplot2)
 
 
-rings<-c(Rings3200m,Rings3500m,Rings3800m)
+rings<-list(rings3200m,rings3500m,rings3800m)
 
 #initilize final dataframe. the loop will append to it each run
 tree.ages<-NULL
@@ -55,4 +51,9 @@ for (i in 1:3){
 
 
 
-ggplot(tree.ages,aes(x=site,y=age,colour =site))+ geom_boxplot(outlier.shape = NA)+ geom_point(aes(site,maxage),shape=2,solid=TRUE)
+ggplot(tree.ages,aes(x=site,y=age,colour =site))+ geom_boxplot(outlier.shape = NA)+ geom_point(aes(site,maxage),shape=2)#,solid=TRUE
+sm::sm.density.compare(x=tree.ages$age, group= tree.ages$site,h=4,model="even")
+
+legend("topright",legend=c("3200m shrub ages Tukey A","3500m shrub ages Tukey B", "3800m shrub ages Tukey B"), lty=c(1,2,3),col = c(2,3,1),cex = .8)
+TukeyHSD(aov(tree.ages$age~tree.ages$site))
+
